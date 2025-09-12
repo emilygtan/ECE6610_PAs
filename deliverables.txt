@@ -1,0 +1,7 @@
+ * ECE 6610 Fall 2025
+ * Instructor: Prof. Karthikeyan Sundaresan
+ * Deliverables for Programming Assignment 1
+
+Compress all files into a single zip file and upload to the assignment on canvas. It is sufficient if one student from each group submits. Remember to change the header in wifi6610.cc.
+
+Deliverables: A zip file containing PA1.docx, q1.cc, q3.cc
