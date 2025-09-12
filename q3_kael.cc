@@ -202,8 +202,8 @@ main(int argc, char* argv[])
     MobilityHelper mobility;
     Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator>();
     positionAlloc->Add(Vector(0.0, 0.0, 0.0));      // AP position
-    positionAlloc->Add(Vector(10.0, 0.0, 0.0));     // STA position - pay attention to distance calculation. Change just one coordinate for simple calculation
-    positionAlloc->Add(Vector(-10.0, 0.0, 0.0)); 
+    positionAlloc->Add(Vector(100, 0.0, 0.0));     // STA position - pay attention to distance calculation. Change just one coordinate for simple calculation
+    positionAlloc->Add(Vector(-100.0, 0.0, 0.0)); 
 
     mobility.SetPositionAllocator(positionAlloc);
     mobility.SetMobilityModel("ns3::ConstantPositionMobilityModel");
@@ -237,7 +237,7 @@ main(int argc, char* argv[])
     server.SetAttribute("OnTime", StringValue("ns3::ConstantRandomVariable[Constant=1]"));
     server.SetAttribute("OffTime", StringValue("ns3::ConstantRandomVariable[Constant=0]"));
     server.SetAttribute("DataRate", DataRateValue(DataRate(dataRate)));
-    ApplicationContainer serverApp = server.Install(staWifiNode);
+    ApplicationContainer serverApp = server.Install(NodeContainer(staWifiNode, staWifiNode2));
 
     /* Start Applications */
     sinkApp.Start(Seconds(0.0));
@@ -249,6 +249,7 @@ main(int argc, char* argv[])
     {
         wifiPhy.SetPcapDataLinkType(WifiPhyHelper::DLT_IEEE802_11_RADIO);
         wifiPhy.EnablePcap("module2-AccessPoint", apDevice);
+        wifiPhy.EnablePcap("module2-Station", staDevices);
         wifiPhy.EnablePcap("module2-Station", staDevices);
     }
 
