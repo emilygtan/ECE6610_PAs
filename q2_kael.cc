@@ -35,10 +35,10 @@
  * ECE 6610 Fall 2025
  * Instructor: Prof. Karthikeyan Sundaresan
  * Programming Assignment 1
- * Q2 - TCP connection over WiFi
- * Team Members: <<Your Names Here>>
- * Team Number: <<Your Team Number Here>>
- * Date: <<Date Here>>
+*Q2 - 
+ * Team Members: Kael Kysar, William Dyches, Emily Tan, Victor Qiu
+ * Team Number: 5
+ * Date: 09-15-25
  */
 
 #include "ns3/command-line.h"
@@ -87,7 +87,7 @@ main(int argc, char* argv[])
     std::string tcpVariant = "TcpNewReno"; /* TCP variant type. */
     std::string phyRate = "HtMcs7";        /* Physical layer bitrate -- Determines maximum possible physical layer rate */
     double simulationTime = 4;            /* Simulation time in seconds. */
-    bool pcapTracing = false;              /* PCAP Tracing is enabled or not. */
+    bool pcapTracing = true;              /* PCAP Tracing is enabled or not. */
     bool enableLargeAmpdu = false;               /* Enable/disable A-MPDU */
     bool enableRts = false;               /* Enable/disable CTS/RTS */
     std::string frequencyBand = "5GHz";     /* Set to '5GHz or '2_4GHz' ;  Frequency band to use */
@@ -248,7 +248,7 @@ main(int argc, char* argv[])
     }
 
     /* Start Simulation */
-    Simulator::Stop(Seconds(simulationTime + 1));
+    Simulator::Stop(Seconds(simulationTime + 4));
     Simulator::Run();
 
     double averageThroughput = ((sink->GetTotalRx() * 8) / (1e6 * simulationTime));
